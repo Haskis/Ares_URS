@@ -26,7 +26,7 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -74,14 +74,14 @@
               <item>
                <widget class="QLineEdit" name="lineEditIP">
                 <property name="text">
-                 <string>127.0.0.1</string>
+                 <string>192.168.1.2</string>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QLineEdit" name="lineEditPort">
                 <property name="text">
-                 <string>1502</string>
+                 <string>502</string>
                 </property>
                </widget>
               </item>

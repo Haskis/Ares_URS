@@ -9,6 +9,9 @@ ModbusClient::ModbusClient(QObject *parent) :
   transactionID(1)
 {
   holdingRegisters = new quint16[holdingRegistersSize];
+  for(int i=0 ; i<holdingRegistersSize ; i++){
+    holdingRegisters[i]=0;
+  }
   setResponseTimerTimeout(500);
   mySocket = new QTcpSocket(this);
   connect(mySocket, SIGNAL(disconnected()), this, SLOT(disconnected()));

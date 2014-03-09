@@ -5,13 +5,14 @@
 
 #define MOTOR_FORWARD 1
 #define MOTOR_BACKWARD 2
-#define MOTOR_BREAK 2
-#define MOTOR_IDLE 3
-#define MOTOR_RIGHT 3
-#define MOTOR_LEFT 4
-#define CONNECTION_INDICATOR 5
+#define MOTOR_BREAK 3
+#define MOTOR_IDLE 4
+#define MOTOR_RIGHT 5
+#define MOTOR_LEFT 6
+#define CONNECTION_INDICATOR 7
 #include <QObject>
 #include "modbusclient.h"
+#include "qmath.h"
 /*How data is organized in HoldingRegisters for Rover Unit
  *
  * 0 - Right Motor Direction

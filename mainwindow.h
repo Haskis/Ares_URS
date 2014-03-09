@@ -8,6 +8,7 @@
 #include "modbusserver.h"
 #include "settingswindow.h"
 #include "qjoystick.h"
+#include "rover.h"
 namespace Ui {
   class MainWindow;
 }
@@ -23,11 +24,13 @@ public:
 private slots:
   void showSettingsWindow();
 
+  void on_pushButton_clicked();
+
 private:
   Ui::MainWindow *ui;
 
-  ModbusServer *myModbusServer;
-  ModbusClient *myModbusClient;
+  Rover *myRover;
+  //ModbusClient *myModbusClient;
 
   //Windows
   SettingsWindow *mySettingsWindow;
@@ -35,6 +38,7 @@ private:
   QJoystick *myJoystick;
 
   QTimer *joypadRefresh;
+  QTimer *roverRefresh;
 };
 
 #endif // MAINWINDOW_H

@@ -27,7 +27,7 @@
      <string>Write Multiple Registers</string>
     </property>
    </widget>
-   <widget class="JoystickView" name="widget" native="true">
+   <widget class="JoystickView" name="widgetJoypad" native="true">
     <property name="geometry">
      <rect>
       <x>300</x>

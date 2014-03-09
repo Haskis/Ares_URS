@@ -74,25 +74,44 @@ QString QJoystick::joystickName(int js)
 //Reads data from joystick (needs to be done in some time intervals)
 bool QJoystick::getData()
 {
-    if(m_joystick==NULL)
-        return false;
-    axis.clear();
-    buttons.clear();
+  if(m_joystick==NULL)
+    return false;
 
-    SDL_Event event;
-    SDL_PollEvent(&event);
-    //Read all axis values
-    for(int i=0;i<SDL_JoystickNumAxes(m_joystick);i++)
-    {
-       axis.append(SDL_JoystickGetAxis(m_joystick,i));
-       //qDebug()<<"Axis i: "<<i<<"value: "<<SDL_JoystickGetAxis(m_joystick,i);
-    }
 
-    //Read all buttons values
-    for(int i=0;i<SDL_JoystickNumButtons(m_joystick);i++)
-    {
-        buttons.append(SDL_JoystickGetButton(m_joystick,i));
+  SDL_Event event;
+  SDL_PollEvent(&event);
+
+  axisPrevious = QList<qint16>(axis);
+  buttonsPrevious = QList<bool>(buttons);
+
+  axis.clear();
+  buttons.clear();
+
+  //Read all axis values
+  for(int i=0;i<SDL_JoystickNumAxes(m_joystick);i++){
+    axis.append(SDL_JoystickGetAxis(m_joystick,i));
+  }
+
+  //Read all buttons values
+  for(int i=0;i<SDL_JoystickNumButtons(m_joystick);i++){
+    buttons.append(SDL_JoystickGetButton(m_joystick,i));
+  }
+
+  //Check if there are some changes and emit signals
+  if(axisPrevious.size() == axis.size()){
+    for(int i=0 ; i<axis.size() ; i++){
+      if(axisPrevious[i] != axis[i]){
+        emit axisChanged(i,axis[i]);
+      }
     }
-    return true;
+  }
+  if(buttonsPrevious.size() == buttons.size()){
+    for(int i=0 ; i<buttons.size() ; i++){
+      if(buttonsPrevious[i] != buttons[i]){
+        emit buttonChanged(i,buttons[i]);
+      }
+    }
+  }
+  return true;
 }
 

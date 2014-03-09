@@ -3,39 +3,46 @@
 
 #include <QObject>
 #include <SDL/SDL.h>
-
+#include <QDebug>
 class QJoystick : public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
 public:
-    explicit QJoystick(QObject *parent = 0);
-    ~QJoystick();
+  explicit QJoystick(QObject *parent = 0);
+  ~QJoystick();
 
-    //Returns number of available joysticks
-    int availableJoysticks();
+  //Returns number of available joysticks
+  int availableJoysticks();
 
-    //Returns index of joystick
-    int currentJoystick();
+  //Returns index of joystick
+  int currentJoystick();
 
-    //Returns name of joystick
-    QString joystickName(int id);
+  //Returns name of joystick
+  QString joystickName(int id);
 
-    //Return number of joystick axes and buttons
-    int joystickNumAxes();
-    int joystickNumButtons();
+  //Return number of joystick axes and buttons
+  int joystickNumAxes();
+  int joystickNumButtons();
 
-    //Holds info about axix and buttons
-    QList<int> axis;
-    QList<bool> buttons;
+  //Holds info about axix and buttons
+  QList<qint16> axis;
+  QList<bool> buttons;
 
-    bool setJoystick(int jsNumber);
+  QList<qint16> axisPrevious;
+  QList<bool> buttonsPrevious;
 
+  bool setJoystick(int jsNumber);
+
+signals:
+  void buttonChanged(int id, bool state);
+  void axisChanged(int id, qint16 value);
 public slots:
-    //Reads data from joystick (needs to be done in some time intervals)
-    bool getData();
+  //Reads data from joystick (needs to be done in some time intervals)
+  bool getData();
+
 
 private:
-    SDL_Joystick* m_joystick;
+  SDL_Joystick* m_joystick;
 
 };
 

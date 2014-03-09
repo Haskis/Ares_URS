@@ -25,8 +25,5 @@ private:
   QColor diodeColor;
   void paintGreenDiode();
   void paintRedDiode();
-
-
-
 };
 #endif // CONNECTIONSTATUSWIDGET_H

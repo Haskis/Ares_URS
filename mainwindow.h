@@ -7,6 +7,7 @@
 #include "modbusclient.h"
 #include "modbusserver.h"
 #include "settingswindow.h"
+#include "qjoystick.h"
 namespace Ui {
   class MainWindow;
 }
@@ -30,6 +31,10 @@ private:
 
   //Windows
   SettingsWindow *mySettingsWindow;
+
+  QJoystick *myJoystick;
+
+  QTimer *joypadRefresh;
 };
 
 #endif // MAINWINDOW_H

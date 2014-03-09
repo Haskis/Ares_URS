@@ -3,7 +3,6 @@
 Rover::Rover(QObject *parent ) :
   ModbusClient(parent)
 { 
-
 }
 
 void Rover::setRightMotorDirection(quint16 value){
@@ -44,6 +43,9 @@ void Rover::sendRoverData(){
   setRegister(5,CONNECTION_INDICATOR);
   writeMultipleRegisters(0,6);
 }
-void Rover::interpretJoypadData(){
+void Rover::interpretJoypadButton(int id, bool status){
+
+}
+void Rover::interpretJoypadAxis(int id, qint16 value){
 
 }

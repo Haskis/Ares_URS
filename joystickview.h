@@ -5,6 +5,8 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QResizeEvent>
+#include <QDebug>
+#include <limits>
 class JoystickView : public QWidget
 {
   Q_OBJECT
@@ -14,22 +16,28 @@ public:
 signals:
 
 public slots:
+
+  void changeButtonState(int id, bool status);
+  void changeAxisStat(int id, qint16 value);
   //void setAnalog(quint16);
 protected:
   void paintEvent(QPaintEvent *);
   void resizeEvent(QResizeEvent *);
 private:
+
   int unitHeight;
   int unitWidth;
   int horizontalOffset;
   int verticalOffset;
-  bool *analogLeftHorizontal;
-  bool *analogLeftVertical;
-  bool *analogRightHorizontal;
-  bool *analogRightVertical;
+
   void calculateUnits();
   int X(int x);
   int Y(int y);
+
+  int numberOfButtons;
+  int numberOfAxis;
+  bool *buttons; //array of 8 buttons
+  qint16 *axis; //array of 4 axis
 };
 
 #endif // JOYSTICKVIEW_H

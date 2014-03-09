@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>649</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,13 +27,23 @@
      <string>Write Multiple Registers</string>
     </property>
    </widget>
+   <widget class="JoystickView" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>99</y>
+      <width>311</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>649</width>
      <height>20</height>
     </rect>
    </property>
@@ -61,6 +71,14 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>JoystickView</class>
+   <extends>QWidget</extends>
+   <header>joystickview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -38,6 +38,8 @@ public slots:
 
   void setTurningMotorDirection(quint16 value);
   void sendRoverData();
+
+  void interpretJoypadData();
 private:
 
   quint16 firstMotorDirection;

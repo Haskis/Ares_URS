@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     settingswindow.cpp \
     qjoystick.cpp \
     joystickview.cpp \
-    rover.cpp
+    rover.cpp \
+    manipulator.cpp
 
 HEADERS  += mainwindow.h \
     modbusclient.h \
@@ -30,7 +31,8 @@ HEADERS  += mainwindow.h \
     settingswindow.h \
     qjoystick.h \
     joystickview.h \
-    rover.h
+    rover.h \
+    manipulator.h
 
 FORMS    += mainwindow.ui \
     settingswindow.ui

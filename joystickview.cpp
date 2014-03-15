@@ -3,7 +3,7 @@
 JoystickView::JoystickView(QWidget *parent) :
   QWidget(parent),
   numberOfButtons(8),
-  numberOfAxis(4)
+  numberOfAxis(5)
 {
   calculateUnits();
 
@@ -80,23 +80,26 @@ void JoystickView::paintEvent(QPaintEvent *){
     myPainter.drawRect(X(4), Y(4), X(1), Y(4)*axis[1]*2/maxQUInt16);
   }
 
-  if(axis[2]>0){
-    myPainter.drawRect(X(15), Y(4), X(4)*axis[2]*2/maxQUInt16, Y(1));
-  }
-  if(axis[2]<0){
-    myPainter.drawRect(X(14), Y(4), X(4)*axis[2]*2/maxQUInt16, Y(1));
-  }
   if(axis[3]>0){
-    myPainter.drawRect(X(14), Y(5), X(1), Y(4)*axis[3]*2/maxQUInt16);
+    myPainter.drawRect(X(15), Y(4), X(4)*axis[3]*2/maxQUInt16, Y(1));
   }
   if(axis[3]<0){
-    myPainter.drawRect(X(14), Y(4), X(1), Y(4)*axis[3]*2/maxQUInt16);
+    myPainter.drawRect(X(14), Y(4), X(4)*axis[3]*2/maxQUInt16, Y(1));
+  }
+  if(axis[4]>0){
+    myPainter.drawRect(X(14), Y(5), X(1), Y(4)*axis[4]*2/maxQUInt16);
+  }
+  if(axis[4]<0){
+    myPainter.drawRect(X(14), Y(4), X(1), Y(4)*axis[4]*2/maxQUInt16);
   }
 
 
 
   //Triggers
 
+  for(int i=0; i<5; i++){
+      qDebug()<< "ID "<<i<<"VALUE "<<axis[i]
+;    }
   if(buttons[4])
     myPainter.setBrush(Qt::red);
   else

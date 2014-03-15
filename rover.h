@@ -10,9 +10,11 @@
 #define MOTOR_RIGHT 5
 #define MOTOR_LEFT 6
 #define CONNECTION_INDICATOR 7
+
 #include <QObject>
 #include "modbusclient.h"
 #include "qmath.h"
+#include <limits>
 /*How data is organized in HoldingRegisters for Rover Unit
  *
  * 0 - Right Motor Direction
@@ -29,19 +31,23 @@ class Rover : public ModbusClient
   Q_OBJECT
 public:
 
-  explicit Rover(QObject *parent=0);
+  explicit Rover(QObject *parent = 0);
 
 public slots:
+
+  void sendRoverData();
+
+  void interpretJoypadButton(int id, bool status);
+  void interpretJoypadAxis(int id, qint16 value);
+
+private slots:
   void setRightMotorDirection(quint16 value);
   void setLeftMotorDirection(quint16 value);
   void setRightMotorSpeed(quint16 value);
   void setLeftMotorSpeed(quint16 value);
 
   void setTurningMotorDirection(quint16 value);
-  void sendRoverData();
 
-  void interpretJoypadButton(int id, bool status);
-  void interpretJoypadAxis(int id, qint16 value);
 private:
 
   quint16 firstMotorDirection;
